@@ -1,0 +1,36 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: admin
+    url: jdbc:mysql://localhost/spring_admin?useSSL=false&allowPublicKeyRetrieval=true
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+      show-sql: true
+  boot:
+    admin:
+      client:
+        url: http://localhost:8081
+  application:
+    name: product-service
+
+logging:
+  file:
+    name: product-service.log
+  logback:
+    rollingpolicy:
+      max-history: 20
+      max-file-size: 20MB
